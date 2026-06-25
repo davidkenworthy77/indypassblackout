@@ -155,11 +155,18 @@ migrate to the admin app later with zero widget changes.
 See [`sheet-template/README.md`](sheet-template/README.md) for the Sheet column
 spec and the **day-grid layout** alternative.
 
-### Persistence in the prototype
-- `data.json` is a static file served from the host.
-- The admin app loads it, persists edits to `localStorage`, and exports a fresh
-  `data.json` (download / copy). In production this would persist to **Supabase**
-  (the easy upgrade path) or commit back to the repo.
+### Persistence: two modes
+- **Offline demo (no setup):** the admin loads the bundled `data.json`, keeps
+  edits in `localStorage`, and can download a fresh `data.json`. Good for a
+  zero-dependency local demo.
+- **Live mode (Supabase + Vercel) — built and wired:** the admin requires a
+  login, loads the **published** document from Supabase, and **Save & publish**
+  writes it back (auth-gated, every save versioned for rollback). A cached Vercel
+  endpoint `/api/data` serves that data to the embedded widgets — so the client
+  edits, hits Save, and the change is live on the website within seconds, with no
+  export or redeploy. See **[DEPLOY.md](DEPLOY.md)** for the architecture and
+  deploy steps. The widgets are identical in both modes — only the `data-source`
+  URL changes from a static file to `/api/data`.
 - Lodging is seeded from the public Lodging Deals page. In production the planner
   should read the existing **Drupal lodging content** rather than a parallel
   store — confirm how lodging nodes relate to resort nodes.

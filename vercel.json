@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm install && npm run build:all",
+  "outputDirectory": ".",
+  "cleanUrls": false,
+  "functions": {
+    "api/*.ts": { "maxDuration": 10 }
+  },
+  "rewrites": [{ "source": "/", "destination": "/index.html" }]
+}

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import type { Session } from "@supabase/supabase-js";
 import type {
   Dataset,
   IndyData,
@@ -17,27 +18,44 @@ import {
   persist,
   prettyJSON,
 } from "./store.ts";
+import { supabase, supabaseEnabled, loadPublished, savePublished } from "./supabase.ts";
 import { Calendar } from "./Calendar.tsx";
 import { ReservationEditor } from "./ReservationEditor.tsx";
 import { LodgingEditor } from "./LodgingEditor.tsx";
 
 type Tab = "blackouts" | "reservation" | "lodging";
 
-export function App() {
+export function App({ session }: { session: Session | null }) {
   const [data, setData] = useState<IndyData | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [dataset, setDataset] = useState<Dataset>("standard");
   const [tab, setTab] = useState<Tab>("blackouts");
   const [search, setSearch] = useState("");
   const [toast, setToast] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [dirty, setDirty] = useState(false);
 
-  // Initial load: localStorage or seed.
+  // Initial load: the published document from Supabase (source of truth) when
+  // configured, otherwise localStorage / bundled seed for the offline demo.
   useEffect(() => {
-    loadData().then(({ data, fromStorage }) => {
+    (async () => {
+      if (supabaseEnabled) {
+        try {
+          const published = await loadPublished();
+          const doc = published ?? (await fetchSeed());
+          setData(doc);
+          setSelectedId(doc.resorts[0]?.node_id ?? null);
+          flash(published ? "Loaded the published data" : "No published data yet — loaded the seed");
+          return;
+        } catch (e) {
+          flash(`Load failed: ${(e as Error).message}`);
+        }
+      }
+      const { data, fromStorage } = await loadData();
       setData(data);
       setSelectedId(data.resorts[0]?.node_id ?? null);
       if (fromStorage) flash("Loaded your saved edits from this browser");
-    });
+    })();
   }, []);
 
   function flash(msg: string) {
@@ -45,9 +63,13 @@ export function App() {
     window.setTimeout(() => setToast((t) => (t === msg ? null : t)), 2200);
   }
 
-  // Persist on every data change (after initial load).
+  // Keep a local draft copy (crash safety) and track unsaved changes.
+  const [loadedAt] = useState(() => ({ first: true }));
   useEffect(() => {
-    if (data) persist(data);
+    if (!data) return;
+    persist(data);
+    if (loadedAt.first) loadedAt.first = false;
+    else setDirty(true);
   }, [data]);
 
   const selected: Resort | undefined = useMemo(
@@ -111,6 +133,24 @@ export function App() {
   }
 
   // ---- Persistence actions ----
+  async function publish() {
+    if (!data) return;
+    setSaving(true);
+    try {
+      await savePublished(data, session?.user?.id);
+      setDirty(false);
+      flash("Saved & published — live on the site within seconds");
+    } catch (e) {
+      flash(`Save failed: ${(e as Error).message}`);
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function signOut() {
+    await supabase?.auth.signOut();
+  }
+
   function exportJSON() {
     if (!data) return;
     const blob = new Blob([prettyJSON(data)], { type: "application/json" });
@@ -159,20 +199,42 @@ export function App() {
           </span>
         </div>
         <div className="spacer" />
-        <p className="persist-note">
-          Writes the canonical data.json. In production this would persist to Supabase or
-          commit to the repo.
-        </p>
+        {supabaseEnabled ? (
+          <p className="persist-note">
+            {dirty ? "You have unsaved changes." : "All changes published."}
+            {session?.user?.email ? ` · ${session.user.email}` : ""}
+          </p>
+        ) : (
+          <p className="persist-note">
+            Offline demo — edits stay in this browser. Connect Supabase to publish live.
+          </p>
+        )}
         <div className="topbar-actions">
           <button className="btn ghost small" onClick={resetSeed}>
             Reset to seed
           </button>
-          <button className="btn ghost small" onClick={copyJSON}>
-            Copy
+          <button className="btn ghost small" onClick={exportJSON}>
+            ⬇ Backup
           </button>
-          <button className="btn primary" onClick={exportJSON}>
-            ⬇ Export data.json
-          </button>
+          {supabaseEnabled ? (
+            <>
+              <button
+                className="btn primary"
+                onClick={publish}
+                disabled={saving || !dirty}
+                title={dirty ? "Publish to the live site" : "Nothing to save"}
+              >
+                {saving ? "Saving…" : dirty ? "Save & publish" : "✓ Saved"}
+              </button>
+              <button className="btn ghost small" onClick={signOut}>
+                Sign out
+              </button>
+            </>
+          ) : (
+            <button className="btn primary" onClick={copyJSON}>
+              Copy data.json
+            </button>
+          )}
         </div>
       </header>
 

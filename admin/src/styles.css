@@ -657,6 +657,49 @@ label {
   font-size: 14px;
 }
 
+/* ---------- Login ---------- */
+.login-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--ink);
+  padding: 24px;
+}
+.login-card {
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 32px 30px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 20px 60px rgba(1, 19, 35, 0.4);
+  border-top: 4px solid var(--indy-orange);
+}
+.login-card .brand {
+  color: var(--ink);
+}
+.login-title {
+  font-family: var(--head);
+  text-transform: uppercase;
+  font-size: 22px;
+  margin: 0 0 4px;
+}
+.login-sub {
+  color: var(--muted);
+  font-size: 13.5px;
+  margin: 0 0 20px;
+}
+.login-err {
+  margin-top: 12px;
+  background: var(--blackout-soft);
+  color: var(--blackout);
+  border: 1px solid #f4c9c4;
+  border-radius: var(--radius-sm);
+  padding: 8px 11px;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
 .danger-zone {
   margin-top: 28px;
   max-width: 760px;
