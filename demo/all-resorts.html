@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>All Resorts & Trip Planner — Indy Pass (demo)</title>
+  <link rel="stylesheet" href="demo.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="index.html"><b>INDY</b> PASS</a>
+      <nav class="nav">
+        <a href="index.html">Blackout Dates</a>
+        <a class="active" href="all-resorts.html">All Resorts &amp; Trip Planner</a>
+        <a href="resort.html">Cannon Mountain</a>
+        <a class="admin" href="../admin/dist/index.html">Admin app ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" style="background-image:linear-gradient(180deg,rgba(1,19,35,.62),rgba(1,19,35,.62)),url('assets/hero.jpg')">
+    <div class="hero__inner">
+      <div class="eyebrow">Across the network</div>
+      <h1>All Resorts &amp; Trip Planner</h1>
+      <p>See what's open across every resort at a glance, build a multi-resort trip around the
+        blackouts, or discover open resorts in a region with their lodging deals attached.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="section">
+      <h2>What's open this weekend</h2>
+      <p class="lede">A heatmap of the whole network for your pass and dates. Switch to the
+        single-day view for spontaneous trips. Filter by region.</p>
+      <div class="embed-note">&lt;div data-indy-widget="resort-matrix"&gt;&lt;/div&gt;</div>
+      <div class="widget-host"><div data-indy-widget="resort-matrix"></div></div>
+    </div>
+
+    <div class="section">
+      <h2>Make a multi-resort weekend work</h2>
+      <p class="lede">Considering three or four resorts for one trip? We'll assign each day to a
+        resort that's open, working around the blackouts.</p>
+      <div class="embed-note">&lt;div data-indy-widget="planner"&gt;&lt;/div&gt;</div>
+      <div class="widget-host"><div data-indy-widget="planner"></div></div>
+    </div>
+
+    <div class="section">
+      <h2>Plan a trip with lodging</h2>
+      <p class="lede">Pick a pass, dates and a region — get open resorts with their lodging deals,
+        showing only what's actually bookable for your nights.</p>
+      <div class="embed-note">&lt;div data-indy-widget="trip-planner"&gt;&lt;/div&gt;</div>
+      <div class="widget-host"><div data-indy-widget="trip-planner"></div></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      Prototype demo · Three widgets on one page, all reading the same <code>data.json</code>.
+    </div>
+  </footer>
+
+  <script src="../widgets/dist/indy-widgets.js" data-source="../data/data.json"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blackout Dates & Reservations — Indy Pass (demo)</title>
+  <link rel="stylesheet" href="demo.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="index.html"><b>INDY</b> PASS</a>
+      <nav class="nav">
+        <a class="active" href="index.html">Blackout Dates</a>
+        <a href="all-resorts.html">All Resorts &amp; Trip Planner</a>
+        <a href="resort.html">Cannon Mountain</a>
+        <a class="admin" href="../admin/dist/index.html">Admin app ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="eyebrow">25 / 26 Season</div>
+      <h1>Blackout Dates &amp; Reservations</h1>
+      <p>Pick your pass and your travel dates. We'll tell you exactly where you can ride — open, blacked out, or open with a reservation — no grid-reading required.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="section">
+      <p class="lede">Start with your pass and dates below. Leave the resort blank to scan the
+        whole network, or search a resort for a precise answer.</p>
+      <div class="embed-note">&lt;div data-indy-widget="checker"&gt;&lt;/div&gt;</div>
+      <div class="widget-host">
+        <div data-indy-widget="checker"></div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <div class="callout">
+        <b>Why this replaces the spreadsheet.</b> The old Blackout Dates page links out to a
+        Google Sheet and a long list of reservation instructions you have to cross-reference by
+        hand. This widget does that cross-referencing for you, the same way auto-parts sites ask
+        for your make, model and year.
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      Prototype demo · Widgets read from a single <code>data.json</code> · Indy Pass Blackout &amp; Reservation Checker
+    </div>
+  </footer>
+
+  <script src="../widgets/dist/indy-widgets.js" data-source="../data/data.json"></script>
+</body>
+</html>

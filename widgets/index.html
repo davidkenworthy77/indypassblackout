@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Indy Widgets — dev playground</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 24px; background: #FAF8F5; }
+    h2 { margin: 32px 0 10px; }
+    .host { margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <h1>Indy Widgets — dev playground</h1>
+  <p>Live-reloading harness for developing the widgets. Data is served from <code>/data/data.json</code> via the dev server proxy below.</p>
+
+  <h2>checker</h2>
+  <div class="host"><div data-indy-widget="checker"></div></div>
+
+  <h2>resort-checker (Cannon, 9001)</h2>
+  <div class="host"><div data-indy-widget="resort-checker" data-resort-node-id="9001"></div></div>
+
+  <h2>calendar (Cannon, 9001)</h2>
+  <div class="host"><div data-indy-widget="calendar" data-resort-node-id="9001"></div></div>
+
+  <h2>planner</h2>
+  <div class="host"><div data-indy-widget="planner"></div></div>
+
+  <h2>trip-planner</h2>
+  <div class="host"><div data-indy-widget="trip-planner"></div></div>
+
+  <h2>resort-matrix</h2>
+  <div class="host"><div data-indy-widget="resort-matrix"></div></div>
+
+  <script type="module" src="/src/main.ts" data-source="/data.json"></script>
+</body>
+</html>

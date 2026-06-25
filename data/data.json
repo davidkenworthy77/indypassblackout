@@ -1,0 +1,1521 @@
+{
+  "season": "25-26",
+  "periods": {
+    "christmas_new_years": {
+      "label": "Christmas / New Year's",
+      "ranges": [
+        [
+          "2025-12-20",
+          "2026-01-04"
+        ]
+      ]
+    },
+    "mlk_weekend": {
+      "label": "MLK Weekend",
+      "ranges": [
+        [
+          "2026-01-17",
+          "2026-01-19"
+        ]
+      ]
+    },
+    "presidents_weekend": {
+      "label": "President's Weekend",
+      "ranges": [
+        [
+          "2026-02-14",
+          "2026-02-16"
+        ]
+      ]
+    },
+    "peak_saturdays": {
+      "label": "Peak Saturdays",
+      "dates": [
+        "2026-01-10",
+        "2026-01-17",
+        "2026-01-24",
+        "2026-01-31",
+        "2026-02-07",
+        "2026-02-14",
+        "2026-02-21",
+        "2026-02-28",
+        "2026-03-07"
+      ]
+    },
+    "peak_sundays": {
+      "label": "Peak Sundays",
+      "dates": [
+        "2026-01-11",
+        "2026-01-18",
+        "2026-01-25",
+        "2026-02-01",
+        "2026-02-08",
+        "2026-02-15",
+        "2026-02-22",
+        "2026-03-01",
+        "2026-03-08"
+      ]
+    }
+  },
+  "resorts": [
+    {
+      "node_id": "9005",
+      "slug": "berkshire-east",
+      "name": "Berkshire East",
+      "region": "East",
+      "standard": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-10",
+          "2026-01-11",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-01-24",
+          "2026-01-25",
+          "2026-01-31",
+          "2026-02-01",
+          "2026-02-07",
+          "2026-02-08",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16",
+          "2026-02-21",
+          "2026-02-22",
+          "2026-02-28",
+          "2026-03-01",
+          "2026-03-07",
+          "2026-03-08"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "see_resort_page",
+          "url": null,
+          "phone": null,
+          "email": null,
+          "instructions": "Advance reservations required on peak days. See resort page for the booking window.",
+          "lead_time": null
+        }
+      },
+      "ltt": {
+        "blackout_dates": [
+          "2025-12-21",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-11",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-01-25",
+          "2026-02-01",
+          "2026-02-08",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16",
+          "2026-02-17",
+          "2026-02-18",
+          "2026-02-19",
+          "2026-02-20",
+          "2026-02-22",
+          "2026-03-01",
+          "2026-03-08"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "online",
+          "url": "https://berkshireeast.com/lessons",
+          "phone": null,
+          "email": null,
+          "instructions": "Book lessons online. Saturday redemptions start at 4:30pm.",
+          "lead_time": "48h"
+        }
+      },
+      "lodging": [
+        {
+          "property": "Warfield House Inn",
+          "discount": "15% off rooms",
+          "promo_code": null,
+          "booking_method": "email",
+          "url": "https://www.warfieldhouseinn.com/",
+          "phone": null,
+          "email": "stay@warfieldhouseinn.com",
+          "min_nights": null,
+          "blackout_dates": [],
+          "notes": null
+        }
+      ]
+    },
+    {
+      "node_id": "9017",
+      "slug": "blacktail-mountain",
+      "name": "Blacktail Mountain",
+      "region": "West",
+      "standard": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "voluntary",
+          "method": "voluntary",
+          "url": "https://blacktailmountain.com",
+          "phone": null,
+          "email": null,
+          "instructions": "Reservations are encouraged on busy weekends but not required.",
+          "lead_time": null
+        }
+      },
+      "ltt": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04"
+        ],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9014",
+      "slug": "brundage-mountain",
+      "name": "Brundage Mountain",
+      "region": "West",
+      "standard": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "online",
+          "url": "https://brundage.com/reservations",
+          "phone": null,
+          "email": null,
+          "instructions": "Reserve your lift access online before arrival.",
+          "lead_time": "24h"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "lodging": [
+        {
+          "property": "McCall Lodging Co.",
+          "discount": "15% off select properties",
+          "promo_code": "INDYMCCALL",
+          "booking_method": "online",
+          "url": "https://www.mccalllodging.com/",
+          "phone": null,
+          "email": null,
+          "min_nights": 2,
+          "blackout_dates": [],
+          "notes": null
+        }
+      ]
+    },
+    {
+      "node_id": "9001",
+      "slug": "cannon-mountain",
+      "name": "Cannon Mountain",
+      "region": "East",
+      "standard": {
+        "blackout_dates": [
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-10",
+          "2026-01-11",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-01-24",
+          "2026-01-25",
+          "2026-01-31",
+          "2026-02-01",
+          "2026-02-07",
+          "2026-02-08",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16",
+          "2026-02-21",
+          "2026-02-22",
+          "2026-02-28",
+          "2026-03-01",
+          "2026-03-07",
+          "2026-03-08"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "see_resort_page",
+          "url": null,
+          "phone": null,
+          "email": null,
+          "instructions": "Advance reservations required. See resort page.",
+          "lead_time": null
+        }
+      },
+      "ltt": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "lodging": [
+        {
+          "property": "Carlson's Lodge",
+          "discount": "20% midweek, 15% weekends (25% / 20% for 2+ nights)",
+          "promo_code": null,
+          "booking_method": "phone",
+          "url": "https://www.carlsonslodge.com/",
+          "phone": "603-846-5501",
+          "email": null,
+          "min_nights": null,
+          "blackout_dates": [],
+          "notes": null
+        },
+        {
+          "property": "Indian Head Resort",
+          "discount": "15% off best available rate",
+          "promo_code": "INDY15",
+          "booking_method": "online",
+          "url": "https://www.indianheadresort.com/",
+          "phone": null,
+          "email": null,
+          "min_nights": null,
+          "blackout_dates": [],
+          "notes": null
+        }
+      ]
+    },
+    {
+      "node_id": "9006",
+      "slug": "catamount",
+      "name": "Catamount",
+      "region": "East",
+      "standard": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "required",
+          "method": "online",
+          "url": "https://catamountski.com/indy-reservations",
+          "phone": null,
+          "email": null,
+          "instructions": "Book your Indy day online.",
+          "lead_time": "48h"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9024",
+      "slug": "centre-vorlage",
+      "name": "Centre Vorlage",
+      "region": "East",
+      "standard": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "required",
+          "method": "email",
+          "url": null,
+          "phone": null,
+          "email": "skischool@centrevorlage.com",
+          "instructions": "Email the ski school to arrange your lesson.",
+          "lead_time": "72h"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9012",
+      "slug": "detroit-mountain",
+      "name": "Detroit Mountain",
+      "region": "Midwest",
+      "standard": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "phone",
+          "url": null,
+          "phone": "218-844-7669",
+          "email": null,
+          "instructions": "Call the front desk to reserve your Indy day.",
+          "lead_time": null
+        }
+      },
+      "ltt": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9020",
+      "slug": "eagle-point",
+      "name": "Eagle Point",
+      "region": "West",
+      "standard": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16"
+        ],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "online",
+          "url": "https://eaglepointresort.com/ski-school",
+          "phone": null,
+          "email": null,
+          "instructions": "Book your Learn to Turn lesson online before arrival.",
+          "lead_time": "48h"
+        }
+      },
+      "lodging": [
+        {
+          "property": "Eagle Point Slopeside Condos",
+          "discount": "25% off nightly rate",
+          "promo_code": "INDYEP",
+          "booking_method": "online",
+          "url": "https://www.eaglepointresort.com/lodging",
+          "phone": null,
+          "email": null,
+          "min_nights": 2,
+          "blackout_dates": [
+            "2025-12-25",
+            "2025-12-26",
+            "2025-12-27",
+            "2025-12-28",
+            "2025-12-29",
+            "2025-12-30",
+            "2025-12-31",
+            "2026-01-01",
+            "2026-01-02",
+            "2026-01-03",
+            "2026-02-14",
+            "2026-02-15",
+            "2026-02-16"
+          ],
+          "notes": null
+        }
+      ]
+    },
+    {
+      "node_id": "9009",
+      "slug": "greek-peak",
+      "name": "Greek Peak",
+      "region": "East",
+      "standard": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "required",
+          "method": "online",
+          "url": "https://greekpeak.net/indy",
+          "phone": null,
+          "email": null,
+          "instructions": "Reserve online; bring confirmation to the ticket window.",
+          "lead_time": "24h"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "required",
+          "method": "online",
+          "url": "https://greekpeak.net/lessons",
+          "phone": null,
+          "email": null,
+          "instructions": "Reserve your lesson online.",
+          "lead_time": "24h"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9018",
+      "slug": "lutsen-mountains",
+      "name": "Lutsen Mountains",
+      "region": "Midwest",
+      "standard": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-10",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-01-24",
+          "2026-01-31",
+          "2026-02-07",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16",
+          "2026-02-21",
+          "2026-02-28",
+          "2026-03-07"
+        ],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9007",
+      "slug": "magic-mountain",
+      "name": "Magic Mountain",
+      "region": "East",
+      "standard": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "required",
+          "method": "see_resort_page",
+          "url": null,
+          "phone": null,
+          "email": null,
+          "instructions": "Reservations required on blackout-adjacent peak days. See resort page.",
+          "lead_time": null
+        }
+      },
+      "ltt": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9022",
+      "slug": "marquette-mountain",
+      "name": "Marquette Mountain",
+      "region": "Midwest",
+      "standard": {
+        "blackout_dates": [
+          "2026-02-14",
+          "2026-02-15"
+        ],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "phone",
+          "url": null,
+          "phone": "906-225-1155",
+          "email": null,
+          "instructions": "Call ahead to reserve a lesson.",
+          "lead_time": "24h"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9021",
+      "slug": "massanutten-resort",
+      "name": "Massanutten Resort",
+      "region": "East",
+      "standard": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16"
+        ],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "phone",
+          "url": null,
+          "phone": "540-289-9441",
+          "email": null,
+          "instructions": "Call the ski school to book your Learn to Turn lesson.",
+          "lead_time": "24h"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9013",
+      "slug": "mission-ridge",
+      "name": "Mission Ridge",
+      "region": "West",
+      "standard": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-10",
+          "2026-01-11",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-01-24",
+          "2026-01-25",
+          "2026-01-31",
+          "2026-02-01",
+          "2026-02-07",
+          "2026-02-08",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16",
+          "2026-02-21",
+          "2026-02-22",
+          "2026-02-28",
+          "2026-03-01",
+          "2026-03-07",
+          "2026-03-08"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "online",
+          "url": "https://missionridge.com/indy-reservations",
+          "phone": null,
+          "email": null,
+          "instructions": "Online reservation required for Indy access.",
+          "lead_time": "48h"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "lodging": [
+        {
+          "property": "Mission Ridge Slopeside RV",
+          "discount": "Indy holder rate",
+          "promo_code": null,
+          "booking_method": "phone",
+          "url": "https://www.missionridge.com/lodging",
+          "phone": "509-663-6543",
+          "email": null,
+          "min_nights": null,
+          "blackout_dates": [],
+          "notes": null
+        }
+      ]
+    },
+    {
+      "node_id": "9010",
+      "slug": "mont-sutton",
+      "name": "Mont Sutton",
+      "region": "East",
+      "standard": {
+        "blackout_dates": [
+          "2025-12-27",
+          "2025-12-28",
+          "2026-02-07",
+          "2026-02-08",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-22",
+          "2026-02-28",
+          "2026-03-01",
+          "2026-03-02",
+          "2026-03-03",
+          "2026-03-04",
+          "2026-03-05",
+          "2026-03-06",
+          "2026-03-07",
+          "2026-03-08"
+        ],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9025",
+      "slug": "mt-holiday",
+      "name": "Mt. Holiday",
+      "region": "Midwest",
+      "standard": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "email",
+          "url": null,
+          "phone": null,
+          "email": "lessons@mtholiday.com",
+          "instructions": "Email ahead to book your lesson slot.",
+          "lead_time": "48h"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9016",
+      "slug": "mt-hood-meadows",
+      "name": "Mt. Hood Meadows",
+      "region": "West",
+      "standard": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-10",
+          "2026-01-11",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-01-24",
+          "2026-01-25",
+          "2026-01-31",
+          "2026-02-01",
+          "2026-02-07",
+          "2026-02-08",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16",
+          "2026-02-21",
+          "2026-02-22",
+          "2026-02-28",
+          "2026-03-01",
+          "2026-03-07",
+          "2026-03-08"
+        ],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9011",
+      "slug": "mt-la-crosse",
+      "name": "Mt. La Crosse",
+      "region": "Midwest",
+      "standard": {
+        "blackout_dates": [
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-01-23",
+          "2026-01-24",
+          "2026-01-25",
+          "2026-01-31",
+          "2026-02-01",
+          "2026-02-13",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16",
+          "2026-02-28",
+          "2026-03-01"
+        ],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9003",
+      "slug": "pats-peak",
+      "name": "Pats Peak",
+      "region": "East",
+      "standard": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "form",
+          "url": "https://patspeak.com/indy-reservation-form",
+          "phone": null,
+          "email": null,
+          "instructions": "Submit the reservation form before your visit.",
+          "lead_time": "24h"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [
+          "2026-01-10",
+          "2026-01-11",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-01-24",
+          "2026-01-25",
+          "2026-01-31",
+          "2026-02-01",
+          "2026-02-07",
+          "2026-02-08",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16",
+          "2026-02-21",
+          "2026-02-22",
+          "2026-02-28",
+          "2026-03-01",
+          "2026-03-07",
+          "2026-03-08"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "phone",
+          "url": null,
+          "phone": "603-428-3245",
+          "email": null,
+          "instructions": "Call the snow sports desk. Ages 7 and up only.",
+          "lead_time": "24h"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9008",
+      "slug": "saddleback",
+      "name": "Saddleback",
+      "region": "East",
+      "standard": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "voluntary",
+          "method": "voluntary",
+          "url": "https://saddlebackmaine.com",
+          "phone": null,
+          "email": null,
+          "instructions": "Optional reservations help us manage peak crowds.",
+          "lead_time": null
+        }
+      },
+      "ltt": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9023",
+      "slug": "shawnee-mountain",
+      "name": "Shawnee Mountain",
+      "region": "East",
+      "standard": {
+        "blackout_dates": [
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-10",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-01-24",
+          "2026-01-31",
+          "2026-02-07",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16",
+          "2026-02-21",
+          "2026-02-28",
+          "2026-03-07"
+        ],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "walkin",
+          "url": null,
+          "phone": null,
+          "email": null,
+          "instructions": "Walk up to the ski school desk on arrival; no advance booking taken.",
+          "lead_time": null
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9019",
+      "slug": "tamarack",
+      "name": "Tamarack",
+      "region": "West",
+      "standard": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16"
+        ],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "lodging": [
+        {
+          "property": "Tamarack Lodge at the Village",
+          "discount": "20% off (2+ nights)",
+          "promo_code": null,
+          "booking_method": "online",
+          "url": "https://www.tamarackidaho.com/lodging",
+          "phone": null,
+          "email": null,
+          "min_nights": 2,
+          "blackout_dates": [
+            "2025-12-26",
+            "2025-12-27",
+            "2025-12-28",
+            "2025-12-29",
+            "2025-12-30",
+            "2025-12-31",
+            "2026-01-01",
+            "2026-01-02"
+          ],
+          "notes": null
+        }
+      ]
+    },
+    {
+      "node_id": "9004",
+      "slug": "tenney-mountain",
+      "name": "Tenney Mountain",
+      "region": "East",
+      "standard": {
+        "blackout_dates": [
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16",
+          "2026-02-17",
+          "2026-02-18",
+          "2026-02-19",
+          "2026-02-20",
+          "2026-02-21"
+        ],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "email",
+          "url": null,
+          "phone": null,
+          "email": "skischool@tenneymtn.com",
+          "instructions": "Email to arrange a lesson time.",
+          "lead_time": "48h"
+        }
+      },
+      "lodging": []
+    },
+    {
+      "node_id": "9002",
+      "slug": "waterville-valley",
+      "name": "Waterville Valley",
+      "region": "East",
+      "standard": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-10",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-01-24",
+          "2026-01-31",
+          "2026-02-07",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16",
+          "2026-02-21",
+          "2026-02-28",
+          "2026-03-07"
+        ],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "ltt": {
+        "blackout_dates": [
+          "2025-11-30",
+          "2025-12-01",
+          "2025-12-02",
+          "2025-12-03",
+          "2025-12-04",
+          "2025-12-05",
+          "2025-12-06",
+          "2025-12-07",
+          "2025-12-08",
+          "2025-12-09",
+          "2025-12-10",
+          "2025-12-11",
+          "2025-12-12",
+          "2025-12-13",
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-08",
+          "2026-01-09",
+          "2026-01-10",
+          "2026-01-13",
+          "2026-01-14",
+          "2026-01-15",
+          "2026-01-16",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-01-22",
+          "2026-01-23",
+          "2026-01-24",
+          "2026-01-30",
+          "2026-01-31",
+          "2026-02-06",
+          "2026-02-07",
+          "2026-02-08",
+          "2026-02-09",
+          "2026-02-10",
+          "2026-02-12",
+          "2026-02-13",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16",
+          "2026-02-17",
+          "2026-02-18",
+          "2026-02-19",
+          "2026-02-20",
+          "2026-02-21",
+          "2026-02-28",
+          "2026-03-01",
+          "2026-03-02",
+          "2026-03-07",
+          "2026-03-22",
+          "2026-03-23"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "online",
+          "url": "https://waterville.com/ski-school",
+          "phone": null,
+          "email": null,
+          "instructions": "Reserve your lesson online; spaces are limited.",
+          "lead_time": "48h"
+        }
+      },
+      "lodging": [
+        {
+          "property": "Golden Eagle Lodge",
+          "discount": "10% off lift + lodging packages",
+          "promo_code": null,
+          "booking_method": "online",
+          "url": "https://www.goldeneaglelodge.com/",
+          "phone": null,
+          "email": null,
+          "min_nights": 2,
+          "blackout_dates": [],
+          "notes": null
+        }
+      ]
+    },
+    {
+      "node_id": "9015",
+      "slug": "white-pass",
+      "name": "White Pass",
+      "region": "West",
+      "standard": {
+        "blackout_dates": [
+          "2025-12-20",
+          "2025-12-21",
+          "2025-12-22",
+          "2025-12-23",
+          "2025-12-24",
+          "2025-12-25",
+          "2025-12-26",
+          "2025-12-27",
+          "2025-12-28",
+          "2025-12-29",
+          "2025-12-30",
+          "2025-12-31",
+          "2026-01-01",
+          "2026-01-02",
+          "2026-01-03",
+          "2026-01-04",
+          "2026-01-10",
+          "2026-01-11",
+          "2026-01-17",
+          "2026-01-18",
+          "2026-01-19",
+          "2026-01-24",
+          "2026-01-25",
+          "2026-01-31",
+          "2026-02-01",
+          "2026-02-07",
+          "2026-02-08",
+          "2026-02-14",
+          "2026-02-15",
+          "2026-02-16",
+          "2026-02-21",
+          "2026-02-22",
+          "2026-02-28",
+          "2026-03-01",
+          "2026-03-07",
+          "2026-03-08"
+        ],
+        "reservation": {
+          "status": "required",
+          "method": "see_resort_page",
+          "url": null,
+          "phone": null,
+          "email": null,
+          "instructions": "Advance reservations required. See resort page.",
+          "lead_time": null
+        }
+      },
+      "ltt": {
+        "blackout_dates": [],
+        "reservation": {
+          "status": "none",
+          "method": "voluntary"
+        }
+      },
+      "lodging": []
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+node_id,resort_name,property,discount,promo_code,booking_method,url,phone,email,min_nights,lodging_blackout_dates
+9001,Cannon Mountain,Carlson's Lodge,"20% midweek, 15% weekends (25% / 20% for 2+ nights)",,phone,https://www.carlsonslodge.com/,603-846-5501,,,
+9001,Cannon Mountain,Indian Head Resort,15% off best available rate,INDY15,online,https://www.indianheadresort.com/,,,,
+9002,Waterville Valley,Golden Eagle Lodge,10% off lift + lodging packages,,online,https://www.goldeneaglelodge.com/,,,2,
+9020,Eagle Point,Eagle Point Slopeside Condos,25% off nightly rate,INDYEP,online,https://www.eaglepointresort.com/lodging,,,2,2025-12-25..2026-01-03;2026-02-14..2026-02-16
+9019,Tamarack,Tamarack Lodge at the Village,20% off (2+ nights),,online,https://www.tamarackidaho.com/lodging,,,2,2025-12-26..2026-01-02
+9013,Mission Ridge,Mission Ridge Slopeside RV,Indy holder rate,,phone,https://www.missionridge.com/lodging,509-663-6543,,,
+9014,Brundage Mountain,McCall Lodging Co.,15% off select properties,INDYMCCALL,online,https://www.mccalllodging.com/,,,2,
+9005,Berkshire East,Warfield House Inn,15% off rooms,,email,https://www.warfieldhouseinn.com/,,stay@warfieldhouseinn.com,,

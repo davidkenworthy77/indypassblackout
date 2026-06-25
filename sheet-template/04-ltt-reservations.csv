@@ -1,0 +1,12 @@
+node_id,resort_name,status,method,url,phone,email,instructions,lead_time
+9020,Eagle Point,required,online,https://eaglepointresort.com/ski-school,,,Book your Learn to Turn lesson online before arrival.,48h
+9002,Waterville Valley,required,online,https://waterville.com/ski-school,,,Reserve your lesson online; spaces are limited.,48h
+9024,Centre Vorlage,required,email,,,skischool@centrevorlage.com,Email the ski school to arrange your lesson.,72h
+9025,Mt. Holiday,required,email,,,lessons@mtholiday.com,Email ahead to book your lesson slot.,48h
+9021,Massanutten Resort,required,phone,,540-289-9441,,Call the ski school to book your Learn to Turn lesson.,24h
+9022,Marquette Mountain,required,phone,,906-225-1155,,Call ahead to reserve a lesson.,24h
+9023,Shawnee Mountain,required,walkin,,,,Walk up to the ski school desk on arrival; no advance booking taken.,
+9005,Berkshire East,required,online,https://berkshireeast.com/lessons,,,Book lessons online. Saturday redemptions start at 4:30pm.,48h
+9003,Pats Peak,required,phone,,603-428-3245,,Call the snow sports desk. Ages 7 and up only.,24h
+9004,Tenney Mountain,required,email,,,skischool@tenneymtn.com,Email to arrange a lesson time.,48h
+9009,Greek Peak,required,online,https://greekpeak.net/lessons,,,Reserve your lesson online.,24h

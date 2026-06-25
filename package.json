@@ -1,0 +1,22 @@
+{
+  "name": "indy-blackout-checker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Indy Pass Blackout & Reservation Checker — embeddable widgets, admin app, and Sheet sync (prototype).",
+  "scripts": {
+    "build:data": "tsx sync/sync.ts",
+    "test": "tsx test/resolver.test.ts",
+    "widgets:dev": "npm --prefix widgets run dev",
+    "widgets:build": "npm --prefix widgets run build",
+    "admin:dev": "npm --prefix admin run dev",
+    "admin:build": "npm --prefix admin run build",
+    "build:all": "npm run build:data && npm run widgets:build && npm run admin:build",
+    "demo": "npm run build:all && npx --yes serve -l 5050 ."
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}

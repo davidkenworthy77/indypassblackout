@@ -1,0 +1,13 @@
+node_id,resort_name,status,method,url,phone,email,instructions,lead_time
+9005,Berkshire East,required,see_resort_page,,,,Advance reservations required on peak days. See resort page for the booking window.,
+9014,Brundage Mountain,required,online,https://brundage.com/reservations,,,Reserve your lift access online before arrival.,24h
+9001,Cannon Mountain,required,see_resort_page,,,,Advance reservations required. See resort page.,
+9006,Catamount,required,online,https://catamountski.com/indy-reservations,,,Book your Indy day online.,48h
+9012,Detroit Mountain,required,phone,,218-844-7669,,Call the front desk to reserve your Indy day.,
+9009,Greek Peak,required,online,https://greekpeak.net/indy,,,Reserve online; bring confirmation to the ticket window.,24h
+9007,Magic Mountain,required,see_resort_page,,,,Reservations required on blackout-adjacent peak days. See resort page.,
+9013,Mission Ridge,required,online,https://missionridge.com/indy-reservations,,,Online reservation required for Indy access.,48h
+9003,Pats Peak,required,form,https://patspeak.com/indy-reservation-form,,,Submit the reservation form before your visit.,24h
+9015,White Pass,required,see_resort_page,,,,Advance reservations required. See resort page.,
+9017,Blacktail Mountain,voluntary,voluntary,https://blacktailmountain.com,,,Reservations are encouraged on busy weekends but not required.,
+9008,Saddleback,voluntary,voluntary,https://saddlebackmaine.com,,,Optional reservations help us manage peak crowds.,

@@ -1,0 +1,26 @@
+node_id,resort_name,region,christmas_new_years,mlk_weekend,presidents_weekend,peak_saturdays,peak_sundays,additional_dates
+9001,Cannon Mountain,East,PARTIAL,X,X,X,X,2026-01-03..2026-01-04;2026-01-10..2026-01-11
+9002,Waterville Valley,East,X,X,X,X,,
+9003,Pats Peak,East,X,X,X,,,
+9004,Tenney Mountain,East,PARTIAL,PARTIAL,X,,,2025-12-26..2025-12-31;2026-01-17..2026-01-18;2026-02-14..2026-02-21
+9005,Berkshire East,East,X,X,X,X,X,
+9006,Catamount,East,,,,,,
+9007,Magic Mountain,East,,,,,,
+9008,Saddleback,East,,,,,,
+9009,Greek Peak,East,,,,,,
+9010,Mont Sutton,East,PARTIAL,PARTIAL,PARTIAL,,,2025-12-27..2025-12-28;2026-02-07..2026-02-08;2026-02-14..2026-02-15;2026-02-22;2026-02-28;2026-03-01..2026-03-08
+9011,Mt. La Crosse,Midwest,PARTIAL,X,PARTIAL,PARTIAL,,2026-01-23..2026-01-25;2026-01-31..2026-02-01;2026-02-13..2026-02-16;2026-02-28..2026-03-01
+9012,Detroit Mountain,Midwest,X,X,X,,,
+9013,Mission Ridge,West,X,X,X,X,X,
+9014,Brundage Mountain,West,X,X,X,,,
+9015,White Pass,West,X,X,X,X,X,
+9016,Mt. Hood Meadows,West,X,X,X,X,X,
+9017,Blacktail Mountain,West,,,,,,
+9018,Lutsen Mountains,Midwest,X,X,X,X,,
+9019,Tamarack,West,X,X,X,,,
+9020,Eagle Point,West,X,X,X,,,
+9021,Massanutten Resort,East,X,X,X,,,
+9022,Marquette Mountain,Midwest,,,PARTIAL,,,2026-02-14..2026-02-15
+9023,Shawnee Mountain,East,PARTIAL,X,X,X,,2025-12-24..2026-01-04
+9024,Centre Vorlage,East,,,,,,
+9025,Mt. Holiday,Midwest,,,,,,

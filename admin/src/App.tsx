@@ -1,0 +1,315 @@
+import { useEffect, useMemo, useState } from "react";
+import type {
+  Dataset,
+  IndyData,
+  ISODate,
+  LodgingDeal,
+  Reservation,
+  Resort,
+  ResortDataset,
+} from "../../core/types.js";
+import {
+  clearPersisted,
+  clone,
+  fetchSeed,
+  loadData,
+  newResort,
+  persist,
+  prettyJSON,
+} from "./store.ts";
+import { Calendar } from "./Calendar.tsx";
+import { ReservationEditor } from "./ReservationEditor.tsx";
+import { LodgingEditor } from "./LodgingEditor.tsx";
+
+type Tab = "blackouts" | "reservation" | "lodging";
+
+export function App() {
+  const [data, setData] = useState<IndyData | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [dataset, setDataset] = useState<Dataset>("standard");
+  const [tab, setTab] = useState<Tab>("blackouts");
+  const [search, setSearch] = useState("");
+  const [toast, setToast] = useState<string | null>(null);
+
+  // Initial load: localStorage or seed.
+  useEffect(() => {
+    loadData().then(({ data, fromStorage }) => {
+      setData(data);
+      setSelectedId(data.resorts[0]?.node_id ?? null);
+      if (fromStorage) flash("Loaded your saved edits from this browser");
+    });
+  }, []);
+
+  function flash(msg: string) {
+    setToast(msg);
+    window.setTimeout(() => setToast((t) => (t === msg ? null : t)), 2200);
+  }
+
+  // Persist on every data change (after initial load).
+  useEffect(() => {
+    if (data) persist(data);
+  }, [data]);
+
+  const selected: Resort | undefined = useMemo(
+    () => data?.resorts.find((r) => r.node_id === selectedId),
+    [data, selectedId],
+  );
+
+  const filtered = useMemo(() => {
+    if (!data) return [];
+    const q = search.trim().toLowerCase();
+    if (!q) return data.resorts;
+    return data.resorts.filter(
+      (r) =>
+        r.name.toLowerCase().includes(q) ||
+        r.region.toLowerCase().includes(q) ||
+        r.slug.toLowerCase().includes(q),
+    );
+  }, [data, search]);
+
+  // ---- Mutators ----
+  function patchResort(id: string, patch: (r: Resort) => Resort) {
+    setData((prev) => {
+      if (!prev) return prev;
+      const next = clone(prev);
+      const idx = next.resorts.findIndex((r) => r.node_id === id);
+      if (idx >= 0) next.resorts[idx] = patch(next.resorts[idx]);
+      return next;
+    });
+  }
+
+  function patchDataset(id: string, ds: Dataset, patch: (d: ResortDataset) => ResortDataset) {
+    patchResort(id, (r) => ({ ...r, [ds]: patch(r[ds]) }));
+  }
+
+  function setBlackouts(dates: ISODate[]) {
+    if (!selected) return;
+    patchDataset(selected.node_id, dataset, (d) => ({ ...d, blackout_dates: dates }));
+  }
+
+  function setReservation(res: Reservation) {
+    if (!selected) return;
+    patchDataset(selected.node_id, dataset, (d) => ({ ...d, reservation: res }));
+  }
+
+  function setLodging(deals: LodgingDeal[]) {
+    if (!selected) return;
+    patchResort(selected.node_id, (r) => ({ ...r, lodging: deals }));
+  }
+
+  function addResort() {
+    const r = newResort();
+    setData((prev) => {
+      if (!prev) return prev;
+      const next = clone(prev);
+      next.resorts.push(r);
+      return next;
+    });
+    setSelectedId(r.node_id);
+    setTab("blackouts");
+    flash("Added new resort");
+  }
+
+  // ---- Persistence actions ----
+  function exportJSON() {
+    if (!data) return;
+    const blob = new Blob([prettyJSON(data)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "data.json";
+    a.click();
+    URL.revokeObjectURL(url);
+    flash("Downloaded data.json");
+  }
+
+  async function copyJSON() {
+    if (!data) return;
+    try {
+      await navigator.clipboard.writeText(prettyJSON(data));
+      flash("Copied data.json to clipboard");
+    } catch {
+      flash("Clipboard blocked — use Export instead");
+    }
+  }
+
+  async function resetSeed() {
+    if (!confirm("Reset to the seed data.json? This discards all edits in this browser.")) return;
+    clearPersisted();
+    const seed = await fetchSeed();
+    setData(seed);
+    setSelectedId(seed.resorts[0]?.node_id ?? null);
+    flash("Reset to seed data");
+  }
+
+  if (!data) {
+    return <div className="loading">Loading data.json…</div>;
+  }
+
+  const dsData = selected ? selected[dataset] : null;
+
+  return (
+    <div className="app">
+      <header className="topbar">
+        <div className="brand">
+          <span className="mark">I</span>
+          <span>
+            Indy Pass Admin
+            <span className="sub"> · Blackouts &amp; Reservations · {data.season}</span>
+          </span>
+        </div>
+        <div className="spacer" />
+        <p className="persist-note">
+          Writes the canonical data.json. In production this would persist to Supabase or
+          commit to the repo.
+        </p>
+        <div className="topbar-actions">
+          <button className="btn ghost small" onClick={resetSeed}>
+            Reset to seed
+          </button>
+          <button className="btn ghost small" onClick={copyJSON}>
+            Copy
+          </button>
+          <button className="btn primary" onClick={exportJSON}>
+            ⬇ Export data.json
+          </button>
+        </div>
+      </header>
+
+      <div className="body">
+        {/* Sidebar */}
+        <aside className="sidebar">
+          <div className="sidebar-head">
+            <div className="row">
+              <input
+                placeholder="Search resorts…"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
+            <button className="btn dark small" style={{ width: "100%" }} onClick={addResort}>
+              ＋ Add resort
+            </button>
+          </div>
+          <div className="resort-list">
+            {filtered.length === 0 && <div className="empty-note">No resorts match.</div>}
+            {filtered.map((r) => (
+              <button
+                key={r.node_id}
+                className={`resort-item ${r.node_id === selectedId ? "active" : ""}`}
+                onClick={() => setSelectedId(r.node_id)}
+              >
+                <div className="name">{r.name || "Untitled resort"}</div>
+                <div className="meta">
+                  <span className="pill">{r.region || "—"}</span>
+                  <span>
+                    {r.standard.blackout_dates.length}/{r.ltt.blackout_dates.length} blackouts
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </aside>
+
+        {/* Main */}
+        <main className="main">
+          {!selected && <div className="empty-note">Select a resort to begin.</div>}
+
+          {selected && dsData && (
+            <>
+              <div className="resort-header">
+                <div className="resort-title-fields">
+                  <div className="name-input">
+                    <label>Resort name</label>
+                    <input
+                      value={selected.name}
+                      onChange={(e) =>
+                        patchResort(selected.node_id, (r) => ({ ...r, name: e.target.value }))
+                      }
+                    />
+                  </div>
+                  <div>
+                    <label>Region</label>
+                    <input
+                      value={selected.region}
+                      onChange={(e) =>
+                        patchResort(selected.node_id, (r) => ({ ...r, region: e.target.value }))
+                      }
+                    />
+                  </div>
+                  <div>
+                    <label>Node ID</label>
+                    <input
+                      value={selected.node_id}
+                      onChange={(e) => {
+                        const newId = e.target.value;
+                        patchResort(selected.node_id, (r) => ({ ...r, node_id: newId }));
+                        setSelectedId(newId);
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 16 }}>
+                <span className="toolbar-label" style={{ width: "auto" }}>
+                  Dataset
+                </span>
+                <div className="dataset-toggle">
+                  <button
+                    className={dataset === "standard" ? "active" : ""}
+                    onClick={() => setDataset("standard")}
+                  >
+                    Standard
+                  </button>
+                  <button
+                    className={dataset === "ltt" ? "active" : ""}
+                    onClick={() => setDataset("ltt")}
+                  >
+                    LTT
+                  </button>
+                </div>
+              </div>
+
+              <div className="tabs">
+                <button
+                  className={`tab ${tab === "blackouts" ? "active" : ""}`}
+                  onClick={() => setTab("blackouts")}
+                >
+                  Blackouts
+                  <span className="count">{dsData.blackout_dates.length}</span>
+                </button>
+                <button
+                  className={`tab ${tab === "reservation" ? "active" : ""}`}
+                  onClick={() => setTab("reservation")}
+                >
+                  Reservation
+                  <span className="count">{dsData.reservation.status}</span>
+                </button>
+                <button
+                  className={`tab ${tab === "lodging" ? "active" : ""}`}
+                  onClick={() => setTab("lodging")}
+                >
+                  Lodging
+                  <span className="count">{selected.lodging.length}</span>
+                </button>
+              </div>
+
+              {tab === "blackouts" && (
+                <Calendar blackoutDates={dsData.blackout_dates} onChange={setBlackouts} />
+              )}
+              {tab === "reservation" && (
+                <ReservationEditor reservation={dsData.reservation} onChange={setReservation} />
+              )}
+              {tab === "lodging" && (
+                <LodgingEditor lodging={selected.lodging} onChange={setLodging} />
+              )}
+            </>
+          )}
+        </main>
+      </div>
+
+      {toast && <div className="toast">{toast}</div>}
+    </div>
+  );
+}
