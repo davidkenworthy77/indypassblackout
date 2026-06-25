@@ -6,5 +6,11 @@
   "functions": {
     "api/*.ts": { "maxDuration": 10 }
   },
-  "rewrites": [{ "source": "/", "destination": "/index.html" }]
+  "redirects": [{ "source": "/admin", "destination": "/admin/", "permanent": false }],
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/admin/", "destination": "/admin/dist/index.html" },
+    { "source": "/admin/assets/(.*)", "destination": "/admin/dist/assets/$1" },
+    { "source": "/admin/data.json", "destination": "/admin/dist/data.json" }
+  ]
 }

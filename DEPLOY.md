@@ -33,6 +33,46 @@ A Supabase project is live for this prototype:
   -- then create their login in Supabase → Authentication → Add user
   ```
 
+## The sign-in page
+
+The admin app **is** the sign-in page — it shows the login form whenever no one
+is signed in, and the editor once they are.
+
+- Deployed (Vercel): **`https://<app>.vercel.app/admin/`**
+- Local: `http://localhost:5050/admin/dist/index.html`
+
+## Managing user accounts
+
+Access has two layers, both required to edit:
+1. **A login** — a Supabase Auth account (email + password).
+2. **Write permission** — their email in the `public.admins` allowlist. Signing
+   in without being on the allowlist lets someone view but never publish.
+
+### Add a person (Supabase dashboard — no code)
+1. supabase.com/dashboard → project **indypass-blackout** → **Authentication →
+   Users → Add user → Create new user**. Enter their email + a password and tick
+   **Auto Confirm User**.
+2. **Authentication → Users** isn't enough on its own — add them to the
+   allowlist: **Table Editor → `admins` → Insert row**, email = their email
+   (or run `insert into public.admins (email) values ('them@example.com');` in
+   the SQL editor).
+
+### Remove a person
+Delete them under **Authentication → Users**, and delete their row from
+`admins`. (Removing just the `admins` row revokes publishing but leaves the
+login able to view.)
+
+### Lock the door (recommended)
+New Supabase projects allow public self-signup. Turn it off so only accounts you
+create can sign in: **Authentication → Sign In / Providers → Email → disable
+"Allow new users to sign up."** Writes are already safe (the allowlist blocks
+them), but this stops strangers creating view-only logins.
+
+> Prefer doing all of this **inside the admin app** (a "Team" panel to add/remove
+> people without the Supabase dashboard)? That's a small add — a server-side
+> `/api/users` function using the service-role key, gated to admins. Ask and it
+> can be built.
+
 ## Deploy to Vercel
 
 1. Import the GitHub repo (`davidkenworthy77/indypassblackout`) into Vercel.
