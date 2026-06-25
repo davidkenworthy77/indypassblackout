@@ -3,6 +3,7 @@ import { injectCSS } from "./theme.js";
 import { h } from "./ui.js";
 
 import { mountChecker } from "./widgets/checker.js";
+import { mountBlackoutOverview } from "./widgets/blackout-overview.js";
 import { mountResortChecker } from "./widgets/resort-checker.js";
 import { mountCalendar } from "./widgets/calendar.js";
 import { mountPlanner } from "./widgets/planner.js";
@@ -18,6 +19,7 @@ type Mounter = (ctx: WidgetContext) => void;
 
 const REGISTRY: Record<string, Mounter> = {
   checker: mountChecker,
+  "blackout-overview": mountBlackoutOverview,
   "resort-checker": mountResortChecker,
   calendar: mountCalendar,
   planner: mountPlanner,

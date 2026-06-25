@@ -88,7 +88,7 @@ export function Calendar({ blackoutDates, onChange }: Props) {
           {periodEntries.map((p) => (
             <button
               key={p.key}
-              className="btn small primary"
+              className="btn btn-chip primary"
               onClick={() => applyPeriod(p.key)}
               title={`Add all ${p.label} dates`}
             >
@@ -104,7 +104,7 @@ export function Calendar({ blackoutDates, onChange }: Props) {
           {periodEntries.map((p) => (
             <button
               key={p.key}
-              className="btn small"
+              className="btn btn-chip"
               onClick={() => clearPeriod(p.key)}
               title={`Remove all ${p.label} dates`}
             >

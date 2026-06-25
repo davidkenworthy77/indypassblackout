@@ -83,7 +83,7 @@ export function mountResortChecker(ctx: WidgetContext) {
   render();
   el.appendChild(card(
     (resort as Resort).name,
-    `${(resort as Resort).region} · Check your dates for this resort`,
+    `Check your dates for this resort`,
     h("div", {}, [controls, h("div", { style: "margin-top:16px" }, [results])]),
   ));
 }

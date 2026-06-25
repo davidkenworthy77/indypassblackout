@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Individual Resort — Indy Pass Widgets</title>
+  <link rel="stylesheet" href="demo.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/"><b>INDY</b> PASS</a>
+      <nav class="nav">
+        <a href="index.html">All Resorts</a>
+        <a class="active" href="individual.html">Individual</a>
+        <a href="../admin/dist/index.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="eyebrow">Resort-page widgets</div>
+      <h1>Individual</h1>
+      <p>Widgets for a single mountain's page. Choose a resort to preview its widgets and copy the
+        embed code — bound to that resort's node ID.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="selector-bar">
+      <label for="mtn">Resort</label>
+      <select id="mtn"></select>
+      <span class="embed__label" style="color:var(--muted)">node ID <code id="nodeid">—</code></span>
+    </div>
+
+    <div class="section">
+      <h2>Resort checker</h2>
+      <p class="lede">Bound to the resort's node ID — the page already knows the mountain, so the
+        visitor just picks a pass and dates.</p>
+      <div class="widget-host"><div id="w-checker" data-indy-widget="resort-checker" data-resort-node-id="9001"></div></div>
+      <div class="embed">
+        <div class="embed__bar"><span class="embed__label">Embed code</span><button class="embed__copy">Copy</button></div>
+        <pre class="embed__code" id="embed-checker"></pre>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Season calendar</h2>
+      <p class="lede">Every day coloured for the chosen pass, paged month by month. Indy+ clears the
+        blackouts while reservation days stay orange.</p>
+      <div class="widget-host"><div id="w-calendar" data-indy-widget="calendar" data-resort-node-id="9001"></div></div>
+      <div class="embed">
+        <div class="embed__bar"><span class="embed__label">Embed code</span><button class="embed__copy">Copy</button></div>
+        <pre class="embed__code" id="embed-calendar"></pre>
+      </div>
+    </div>
+  </main>
+
+  <script src="../widgets/dist/indy-widgets.js" data-source="../data/data.json"></script>
+  <script src="demo.js"></script>
+  <script>
+    (async () => {
+      const data = await (await fetch("../data/data.json")).json();
+      const resorts = [...data.resorts].sort((a, b) => a.name.localeCompare(b.name));
+      const sel = document.getElementById("mtn");
+      for (const r of resorts) {
+        const o = document.createElement("option");
+        o.value = r.node_id; o.textContent = `${r.name} (${r.region})`;
+        sel.appendChild(o);
+      }
+
+      function embed(widget, nodeId) {
+        return `<div data-indy-widget="${widget}" data-resort-node-id="${nodeId}"></div>\n` +
+               `<script src="https://YOURSITE/indy-widgets.js"\n        data-source="https://YOURSITE/api/data"><\/script>`;
+      }
+      function updateEmbeds(nodeId) {
+        document.getElementById("nodeid").textContent = nodeId;
+        document.getElementById("embed-checker").textContent = embed("resort-checker", nodeId);
+        document.getElementById("embed-calendar").textContent = embed("calendar", nodeId);
+      }
+      function remount(nodeId) {
+        for (const id of ["w-checker", "w-calendar"]) {
+          const el = document.getElementById(id);
+          el.innerHTML = "";
+          el.removeAttribute("data-indy-mounted");
+          el.classList.remove("indy-w");
+          el.setAttribute("data-resort-node-id", nodeId);
+        }
+        window.IndyWidgets && window.IndyWidgets.hydrate();
+        updateEmbeds(nodeId);
+      }
+
+      const initial = "9001";
+      sel.value = initial;
+      updateEmbeds(initial);
+      sel.addEventListener("change", (e) => remount(e.target.value));
+    })();
+  </script>
+</body>
+</html>

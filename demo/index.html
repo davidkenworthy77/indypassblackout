@@ -3,56 +3,72 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blackout Dates & Reservations — Indy Pass (demo)</title>
+  <title>All Resorts — Indy Pass Widgets</title>
   <link rel="stylesheet" href="demo.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="brand" href="index.html"><b>INDY</b> PASS</a>
+      <a class="brand" href="/"><b>INDY</b> PASS</a>
       <nav class="nav">
-        <a class="active" href="index.html">Blackout Dates</a>
-        <a href="all-resorts.html">All Resorts &amp; Trip Planner</a>
-        <a href="resort.html">Cannon Mountain</a>
-        <a class="admin" href="../admin/dist/index.html">Admin app ↗</a>
+        <a class="active" href="index.html">All Resorts</a>
+        <a href="individual.html">Individual</a>
+        <a href="../admin/dist/index.html">Admin</a>
       </nav>
     </div>
   </header>
 
   <section class="hero">
     <div class="hero__inner">
-      <div class="eyebrow">25 / 26 Season</div>
-      <h1>Blackout Dates &amp; Reservations</h1>
-      <p>Pick your pass and your travel dates. We'll tell you exactly where you can ride — open, blacked out, or open with a reservation — no grid-reading required.</p>
+      <div class="eyebrow">Network-wide widgets</div>
+      <h1>All Resorts</h1>
+      <p>Widgets that work across the whole Indy network. Preview them below and copy the embed
+        code straight onto your site.</p>
     </div>
   </section>
 
   <main>
     <div class="section">
-      <p class="lede">Start with your pass and dates below. Leave the resort blank to scan the
-        whole network, or search a resort for a precise answer.</p>
-      <div class="embed-note">&lt;div data-indy-widget="checker"&gt;&lt;/div&gt;</div>
-      <div class="widget-host">
-        <div data-indy-widget="checker"></div>
+      <h2>Blackout &amp; reservation checker</h2>
+      <p class="lede">Pick a pass and dates, then search or filter to find what's open across the
+        network. Each result expands for the day-by-day detail.</p>
+      <div class="widget-host"><div data-indy-widget="checker"></div></div>
+      <div class="embed">
+        <div class="embed__bar"><span class="embed__label">Embed code</span><button class="embed__copy">Copy</button></div>
+        <pre class="embed__code">&lt;div data-indy-widget="checker"&gt;&lt;/div&gt;
+&lt;script src="https://YOURSITE/indy-widgets.js"
+        data-source="https://YOURSITE/api/data"&gt;&lt;/script&gt;</pre>
       </div>
     </div>
 
-    <div class="prose">
-      <div class="callout">
-        <b>Why this replaces the spreadsheet.</b> The old Blackout Dates page links out to a
-        Google Sheet and a long list of reservation instructions you have to cross-reference by
-        hand. This widget does that cross-referencing for you, the same way auto-parts sites ask
-        for your make, model and year.
+    <div class="section">
+      <h2>What's open this weekend</h2>
+      <p class="lede">The whole network at a glance — a heatmap by date, or a single-day list for
+        spontaneous trips. Recolours by pass, filterable by region.</p>
+      <div class="widget-host"><div data-indy-widget="resort-matrix"></div></div>
+      <div class="embed">
+        <div class="embed__bar"><span class="embed__label">Embed code</span><button class="embed__copy">Copy</button></div>
+        <pre class="embed__code">&lt;div data-indy-widget="resort-matrix"&gt;&lt;/div&gt;
+&lt;script src="https://YOURSITE/indy-widgets.js"
+        data-source="https://YOURSITE/api/data"&gt;&lt;/script&gt;</pre>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Blackout overview <span style="font-size:13px;color:var(--muted);font-family:var(--body);text-transform:none;font-weight:600">· variant for discussion</span></h2>
+      <p class="lede">A variant of the checker: with no dates chosen it lists every resort and the
+        key periods it blacks out (like the printed grid). Choose dates and it becomes the checker.</p>
+      <div class="widget-host"><div data-indy-widget="blackout-overview"></div></div>
+      <div class="embed">
+        <div class="embed__bar"><span class="embed__label">Embed code</span><button class="embed__copy">Copy</button></div>
+        <pre class="embed__code">&lt;div data-indy-widget="blackout-overview"&gt;&lt;/div&gt;
+&lt;script src="https://YOURSITE/indy-widgets.js"
+        data-source="https://YOURSITE/api/data"&gt;&lt;/script&gt;</pre>
       </div>
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="footer__inner">
-      Prototype demo · Widgets read from a single <code>data.json</code> · Indy Pass Blackout &amp; Reservation Checker
-    </div>
-  </footer>
-
   <script src="../widgets/dist/indy-widgets.js" data-source="../data/data.json"></script>
+  <script src="demo.js"></script>
 </body>
 </html>

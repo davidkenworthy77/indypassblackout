@@ -140,6 +140,28 @@ label {
   flex: 1;
 }
 
+.topbar-nav {
+  display: flex;
+  gap: 18px;
+  margin-left: 22px;
+  align-items: center;
+}
+.topbar-nav a {
+  font-family: var(--head);
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #9fb2bd;
+  text-decoration: none;
+}
+.topbar-nav a:hover { color: #fff; }
+.topbar-nav a.active {
+  color: #fff;
+  border-bottom: 2px solid var(--indy-orange);
+  padding-bottom: 2px;
+}
+
 .topbar-actions {
   display: flex;
   gap: 8px;
@@ -252,9 +274,9 @@ label {
   flex: 1;
 }
 
-.resort-title-fields .name-input input {
-  font-size: 18px;
-  font-weight: 700;
+.resort-title-fields input {
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .dataset-toggle {
@@ -374,6 +396,16 @@ label {
 .btn.small {
   padding: 5px 9px;
   font-size: 12px;
+}
+
+/* Compact, non-caps period chips (Apply/Clear rows) — fit 5 on one line. */
+.btn.btn-chip {
+  font-family: var(--body);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 9px;
 }
 
 .btn.danger {

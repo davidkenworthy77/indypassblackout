@@ -132,6 +132,18 @@ export function App({ session }: { session: Session | null }) {
     flash("Added new resort");
   }
 
+  function deleteResort(resort: Resort) {
+    if (!confirm(`Delete "${resort.name}"? This can't be undone (until you re-publish).`)) return;
+    setData((prev) => {
+      if (!prev) return prev;
+      const next = clone(prev);
+      next.resorts = next.resorts.filter((r) => r.node_id !== resort.node_id);
+      setSelectedId(next.resorts[0]?.node_id ?? null);
+      return next;
+    });
+    flash(`Deleted ${resort.name} — Save & publish to make it live`);
+  }
+
   // ---- Persistence actions ----
   async function publish() {
     if (!data) return;
@@ -191,13 +203,15 @@ export function App({ session }: { session: Session | null }) {
   return (
     <div className="app">
       <header className="topbar">
-        <div className="brand">
+        <a className="brand" href="/" style={{ textDecoration: "none", color: "inherit" }}>
           <span className="mark">I</span>
-          <span>
-            Indy Pass Admin
-            <span className="sub"> · Blackouts &amp; Reservations · {data.season}</span>
-          </span>
-        </div>
+          <span>Indy Pass</span>
+        </a>
+        <nav className="topbar-nav">
+          <a href="../../demo/index.html">All Resorts</a>
+          <a href="../../demo/individual.html">Individual</a>
+          <a className="active" href="#">Admin</a>
+        </nav>
         <div className="spacer" />
         {supabaseEnabled ? (
           <p className="persist-note">
@@ -311,6 +325,13 @@ export function App({ session }: { session: Session | null }) {
                     />
                   </div>
                 </div>
+                <button
+                  className="btn danger small"
+                  onClick={() => deleteResort(selected)}
+                  title="Delete this resort"
+                >
+                  Delete resort
+                </button>
               </div>
 
               <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 16 }}>
