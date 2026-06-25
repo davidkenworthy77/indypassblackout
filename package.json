@@ -4,13 +4,14 @@
   "private": true,
   "type": "module",
   "description": "Indy Pass Blackout & Reservation Checker — embeddable widgets, admin app, and Sheet sync (prototype).",
+  "workspaces": ["widgets", "admin"],
   "scripts": {
     "build:data": "tsx sync/sync.ts",
     "test": "tsx test/resolver.test.ts",
-    "widgets:dev": "npm --prefix widgets run dev",
-    "widgets:build": "npm --prefix widgets run build",
-    "admin:dev": "npm --prefix admin run dev",
-    "admin:build": "npm --prefix admin run build",
+    "widgets:dev": "npm run dev -w widgets",
+    "widgets:build": "npm run build -w widgets",
+    "admin:dev": "npm run dev -w admin",
+    "admin:build": "npm run build -w admin",
     "build:all": "npm run build:data && npm run widgets:build && npm run admin:build",
     "demo": "npm run build:all && npx --yes serve -l 5050 ."
   },
