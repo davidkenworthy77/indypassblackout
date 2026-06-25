@@ -468,14 +468,22 @@ label {
   gap: 10px;
 }
 
+.clear-end .btn {
+  height: 32px;
+}
+
 .count-badge {
+  display: inline-block;
+  height: 32px;
+  line-height: 30px;
   font-size: 13px;
   font-weight: 600;
   color: var(--ink);
   background: var(--blackout-soft);
   border: 1px solid #f0caca;
-  padding: 6px 12px;
+  padding: 0 12px;
   border-radius: var(--radius-sm);
+  white-space: nowrap;
 }
 
 .count-badge b {
