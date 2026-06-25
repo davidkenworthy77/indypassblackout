@@ -28,8 +28,9 @@ a { color: var(--red); }
 
 .site-header { background: var(--navy); color: #fff; position: sticky; top: 0; z-index: 10; }
 .site-header__inner { max-width: 1080px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; gap: 22px; }
-.brand { font-family: var(--head); font-weight: 800; text-transform: uppercase; letter-spacing: .01em; font-size: 19px; color: #fff; text-decoration: none; }
+.brand { display: inline-flex; align-items: center; font-family: var(--head); font-weight: 800; text-transform: uppercase; letter-spacing: .01em; font-size: 19px; color: #fff; text-decoration: none; }
 .brand b { color: var(--red); }
+.brand img { height: 30px; width: auto; display: block; }
 .nav { display: flex; gap: 20px; flex-wrap: wrap; margin-left: auto; }
 .nav a { font-family: var(--head); text-transform: uppercase; color: #cfd8dd; text-decoration: none; font-size: 12px; font-weight: 700; letter-spacing: .03em; transition: .15s; }
 .nav a:hover, .nav a.active { color: #fff; }

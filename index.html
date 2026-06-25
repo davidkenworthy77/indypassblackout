@@ -10,8 +10,9 @@
     * { box-sizing: border-box; }
     body { margin:0; font-family:var(--body); color:var(--navy); background:var(--bg2); line-height:1.6; }
     header { background:var(--navy); color:#fff; padding:18px 24px; }
-    .brand { font-family:var(--head); font-weight:800; text-transform:uppercase; letter-spacing:.01em; font-size:19px; }
+    .brand { display:inline-flex; align-items:center; font-family:var(--head); font-weight:800; text-transform:uppercase; letter-spacing:.01em; font-size:19px; }
     .brand b { color:var(--red); }
+    .brand img { height:30px; width:auto; display:block; }
     main { max-width:880px; margin:0 auto; padding:52px 24px 80px; }
     .eyebrow { font-family:var(--head); text-transform:uppercase; letter-spacing:.14em; font-size:12px; font-weight:700; color:var(--red); margin-bottom:12px; }
     h1 { font-family:var(--head); text-transform:uppercase; font-weight:700; line-height:1.1; font-size:36px; margin:0 0 12px; }
@@ -28,7 +29,7 @@
   </style>
 </head>
 <body>
-  <header><span class="brand"><b>INDY</b> PASS · Prototype</span></header>
+  <header><span class="brand"><img src="/demo/assets/iplogo-light.svg" alt="Indy Pass" /></span></header>
   <main>
     <div class="eyebrow">25 / 26 Season · Demo</div>
     <h1>Blackout &amp; Reservation Checker</h1>
@@ -51,8 +52,6 @@
         <p>Add dates, reservations and lodging, then Save &amp; publish — live on the widgets within seconds.</p>
       </a>
     </div>
-
-    <p class="note">Started via <code>npm run demo</code>. If a page ever looks unstyled, hard-reload (<code>⌘⇧R</code>) — the static server caches redirects.</p>
   </main>
 </body>
 </html>

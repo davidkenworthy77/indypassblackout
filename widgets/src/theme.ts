@@ -131,14 +131,14 @@ export const CSS = /* css */ `
 .indy-reservation-detail a { color: var(--indy-orange-dark); font-weight: 600; }
 .indy-reservation-detail .label { font-weight: 700; color: var(--indy-reservation); }
 
-/* Calendar */
-.indy-cal-months { display: flex; flex-direction: column; gap: 18px; }
-.indy-cal-month__name { font-weight: 700; margin: 0 0 8px; font-size: 15px; }
-.indy-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-.indy-cal-dow { text-align: center; font-size: 11px; font-weight: 700; color: var(--indy-muted); padding-bottom: 2px; }
+/* Calendar — compact, all months at once in a responsive grid. */
+.indy-cal-months { display: grid; grid-template-columns: repeat(auto-fill, minmax(186px, 1fr)); gap: 16px 18px; }
+.indy-cal-month__name { font-family: var(--indy-font-head); font-weight: 700; text-transform: uppercase; letter-spacing: .01em; margin: 0 0 7px; font-size: 12px; }
+.indy-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.indy-cal-dow { text-align: center; font-size: 9.5px; font-weight: 700; color: var(--indy-muted); padding-bottom: 1px; }
 .indy-cal-day {
-  position: relative; aspect-ratio: 1 / 1; border-radius: 8px; border: 1px solid transparent;
-  display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600;
+  position: relative; aspect-ratio: 1 / 1; border-radius: 5px; border: 1px solid transparent;
+  display: flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 600;
   cursor: pointer; background: var(--indy-surface-2); color: var(--indy-ink);
 }
 .indy-cal-day.empty { background: transparent; cursor: default; }

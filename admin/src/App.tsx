@@ -204,8 +204,7 @@ export function App({ session }: { session: Session | null }) {
     <div className="app">
       <header className="topbar">
         <a className="brand" href="/" style={{ textDecoration: "none", color: "inherit" }}>
-          <span className="mark">I</span>
-          <span>Indy Pass</span>
+          <img className="brand-logo" src="/demo/assets/iplogo-light.svg" alt="Indy Pass" />
         </a>
         <nav className="topbar-nav">
           <a href="../../demo/index.html">All Resorts</a>

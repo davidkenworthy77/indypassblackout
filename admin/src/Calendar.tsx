@@ -95,9 +95,6 @@ export function Calendar({ blackoutDates, onChange }: Props) {
               ＋ {p.label}
             </button>
           ))}
-          <span className="count-badge">
-            <b>{set.size}</b> day{set.size === 1 ? "" : "s"} blacked out
-          </span>
         </div>
         <div className="toolbar-row">
           <span className="toolbar-label">Clear</span>
@@ -111,9 +108,14 @@ export function Calendar({ blackoutDates, onChange }: Props) {
               − {p.label}
             </button>
           ))}
-          <button className="btn small danger" onClick={clearAll} style={{ marginLeft: "auto" }}>
-            Clear all
-          </button>
+          <span className="clear-end">
+            <span className="count-badge">
+              <b>{set.size}</b> day{set.size === 1 ? "" : "s"} blacked out
+            </span>
+            <button className="btn small danger" onClick={clearAll}>
+              Clear all
+            </button>
+          </span>
         </div>
       </div>
 

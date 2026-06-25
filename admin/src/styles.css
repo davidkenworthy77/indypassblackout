@@ -130,6 +130,12 @@ label {
   font-weight: 800;
 }
 
+.brand-logo {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
 .brand .sub {
   font-weight: 500;
   color: #b9b6b1;
@@ -262,9 +268,14 @@ label {
 
 .resort-header {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: 16px;
   margin-bottom: 18px;
+}
+
+.resort-header > .btn {
+  height: 38px;
+  flex-shrink: 0;
 }
 
 .resort-title-fields {
@@ -277,6 +288,7 @@ label {
 .resort-title-fields input {
   font-size: 15px;
   font-weight: 600;
+  height: 38px;
 }
 
 .dataset-toggle {
@@ -449,8 +461,14 @@ label {
   flex-shrink: 0;
 }
 
-.count-badge {
+.clear-end {
   margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.count-badge {
   font-size: 13px;
   font-weight: 600;
   color: var(--ink);
