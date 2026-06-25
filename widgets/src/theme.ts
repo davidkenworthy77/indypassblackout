@@ -234,8 +234,8 @@ export const CSS = /* css */ `
   display: flex; align-items: center; gap: 12px; padding: 12px 14px; cursor: pointer;
 }
 .indy-result__head:hover { background: var(--indy-surface-2); }
-.indy-result__id { min-width: 130px; flex-shrink: 0; }
-.indy-result__pills { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+.indy-result__id { min-width: 130px; flex: 1; }
+.indy-result__pills { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
 .indy-details-toggle {
   appearance: none; border: 1px solid var(--indy-line); background: var(--indy-surface);
   color: var(--indy-orange-dark); font: inherit; font-size: 12px; font-weight: 700;
