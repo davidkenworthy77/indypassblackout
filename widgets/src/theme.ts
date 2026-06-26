@@ -264,6 +264,21 @@ export const CSS = /* css */ `
 .indy-overview__id { min-width: 150px; flex-shrink: 0; }
 .indy-overview__chips { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
 .indy-chip.period { color: var(--indy-blackout); border-color: var(--indy-blackout); background: var(--indy-blackout-bg); text-decoration: none; }
+
+/* Blackout overview — PDF-style period grid */
+.indy-pmatrix { min-width: 640px; }
+.indy-pmatrix thead th { padding: 8px; min-width: 62px; vertical-align: bottom; }
+.indy-pmatrix thead th .sub { display: block; font-weight: 400; font-size: 9px; color: var(--indy-muted); margin-top: 3px; }
+.indy-pmatrix thead th.notes-h { min-width: 180px; text-align: left; padding-left: 12px; }
+.indy-pmatrix tbody th { line-height: 1.25; padding: 8px 12px; }
+.indy-pmatrix__name { font-weight: 650; }
+.indy-pmatrix td { padding: 8px; }
+.indy-pmatrix td.notes { text-align: left; font-size: 11px; color: var(--indy-muted); white-space: normal; min-width: 180px; line-height: 1.4; padding: 8px 12px; }
+.indy-pdot { width: 13px; height: 13px; border-radius: 50%; display: inline-block; }
+.indy-pdot.open { background: var(--indy-open); }
+.indy-pdot.blackout { background: var(--indy-blackout); }
+.indy-pdot.partial { background: var(--indy-reservation); }
+.indy-restag { display: inline-block; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: var(--indy-reservation); border: 1px solid var(--indy-reservation); border-radius: 4px; padding: 0 4px; margin-left: 6px; vertical-align: middle; }
 `;
 
 let injected = false;

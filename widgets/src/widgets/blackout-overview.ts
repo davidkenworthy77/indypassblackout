@@ -3,7 +3,7 @@ import type { PassId, Resort } from "../../../core/types.js";
 import { getPass } from "../../../core/types.js";
 import { resolveRange, buildPeriodIndex, type RangeResolution, type DayState } from "../../../core/resolver.js";
 import { expandPeriod } from "../../../core/resolve-periods.js";
-import { formatShort } from "../../../core/dates.js";
+import { formatShort, toDayNum } from "../../../core/dates.js";
 import {
   h, clear, card, field, passSelect, dateInput, statePill, reservationDetail,
 } from "../ui.js";
@@ -33,21 +33,68 @@ export function mountBlackoutOverview(ctx: WidgetContext) {
 
   const results = h("div");
 
-  // Which named periods (and whether "other" dates) a resort blacks out.
-  function resortPeriods(resort: Resort): { labels: string[]; other: boolean; total: number } {
+  // ---- matrix helpers (default no-dates view) ----
+  const PERIOD_KEYS = Object.keys(data.periods);
+  const SHORT: Record<string, string> = {
+    christmas_new_years: "Christmas",
+    mlk_weekend: "MLK",
+    presidents_weekend: "President's",
+    peak_saturdays: "Peak Sat",
+    peak_sundays: "Peak Sun",
+  };
+  const shortLabel = (key: string) => SHORT[key] ?? data.periods[key].label;
+  /** "Jan 3" — short month + day, no weekday. */
+  const md = (iso: string) => formatShort(iso).replace(/^\w{3}, /, "");
+  const span = (key: string) => {
+    const d = periodDates.get(key)!;
+    return `${md(d[0])} – ${md(d[d.length - 1])}`;
+  };
+
+  function blackoutSetFor(resort: Resort): Set<string> {
     const p = getPass(pass);
-    if (!p.observesBlackouts) return { labels: [], other: false, total: 0 };
-    const blackouts = new Set(resort[p.blackoutDataset].blackout_dates);
-    const labels: string[] = [];
-    const covered = new Set<string>();
-    for (const key of Object.keys(data.periods)) {
-      const dates = periodDates.get(key)!;
-      let hit = false;
-      for (const d of dates) if (blackouts.has(d)) { hit = true; covered.add(d); }
-      if (hit) labels.push(data.periods[key].label);
+    if (!p.observesBlackouts) return new Set();
+    return new Set(resort[p.blackoutDataset].blackout_dates);
+  }
+
+  type CellState = "open" | "blackout" | "partial";
+  function cellState(blackouts: Set<string>, key: string): CellState {
+    const dates = periodDates.get(key)!;
+    let hit = 0;
+    for (const d of dates) if (blackouts.has(d)) hit++;
+    if (hit === 0) return "open";
+    if (hit === dates.length) return "blackout";
+    return "partial";
+  }
+
+  /** Compress consecutive ISO dates into "Jan 3 – Jan 4" ranges. */
+  function formatRanges(isos: string[]): string {
+    const sorted = [...isos].sort();
+    const out: string[] = [];
+    let i = 0;
+    while (i < sorted.length) {
+      let j = i;
+      while (j + 1 < sorted.length && toDayNum(sorted[j + 1]) === toDayNum(sorted[j]) + 1) j++;
+      out.push(j > i ? `${md(sorted[i])} – ${md(sorted[j])}` : md(sorted[i]));
+      i = j + 1;
     }
-    const other = [...blackouts].some((d) => !covered.has(d));
-    return { labels, other, total: blackouts.size };
+    return out.join(", ");
+  }
+
+  /** Notes for partial periods + any blackout dates outside named periods. */
+  function resortNotes(blackouts: Set<string>): string {
+    const covered = new Set<string>();
+    const parts: string[] = [];
+    for (const key of PERIOD_KEYS) {
+      const dates = periodDates.get(key)!;
+      const inP = dates.filter((d) => blackouts.has(d));
+      inP.forEach((d) => covered.add(d));
+      if (inP.length > 0 && inP.length < dates.length) {
+        parts.push(`${shortLabel(key)}: ${formatRanges(inP)}`);
+      }
+    }
+    const other = [...blackouts].filter((d) => !covered.has(d));
+    if (other.length) parts.push(`Other: ${formatRanges(other)}`);
+    return parts.join(" · ");
   }
 
   function countPills(rr: RangeResolution): HTMLElement {
@@ -80,34 +127,53 @@ export function mountBlackoutOverview(ctx: WidgetContext) {
     return body;
   }
 
-  // ---- default (no dates) overview ----
+  // ---- default (no dates) overview: the PDF-style blackout grid ----
   function renderOverview() {
     results.appendChild(h("div", { class: "indy-card__sub", style: "margin-bottom:10px" }, [
-      `Every resort's blackout periods for the ${getPass(pass).label}. Pick dates above to check a specific trip.`,
+      `Blackout grid for the ${getPass(pass).label}. Pick dates above to check a specific trip.`,
     ]));
-    const list = h("div", { class: "indy-list" });
-    const sorted = [...data.resorts].sort((a, b) => a.name.localeCompare(b.name));
-    for (const r of sorted) {
-      const { labels, other, total } = resortPeriods(r);
-      const chips = h("div", { class: "indy-overview__chips" });
-      if (total === 0) {
-        chips.appendChild(h("span", { class: "indy-pill indy-state-open" }, ["No blackouts"]));
-      } else {
-        for (const label of labels) chips.appendChild(h("span", { class: "indy-chip period" }, [label]));
-        if (other) chips.appendChild(h("span", { class: "indy-chip period" }, ["Other dates"]));
-      }
-      const reservation = r[getPass(pass).reservationDataset].reservation;
-      if (reservation.status === "required") chips.appendChild(h("span", { class: "indy-chip reservation" }, ["Reservation"]));
+    results.appendChild(h("div", { class: "indy-cal-legend", style: "margin-bottom:12px" }, [
+      h("span", {}, [h("span", { class: "indy-dot open" }), "Open"]),
+      h("span", {}, [h("span", { class: "indy-dot blackout" }), "Blacked out"]),
+      h("span", {}, [h("span", { class: "indy-dot reservation" }), "Partial — some days (see notes)"]),
+    ]));
 
-      list.appendChild(h("div", { class: "indy-overview__row" }, [
-        h("div", { class: "indy-overview__id" }, [
-          h("div", { class: "indy-row__name" }, [r.name]),
-          h("div", { class: "indy-row__meta" }, [r.region]),
-        ]),
-        chips,
+    const sorted = [...data.resorts].sort((a, b) => a.name.localeCompare(b.name));
+    const table = h("table", { class: "indy-matrix indy-pmatrix" });
+
+    const hr = h("tr", {}, [h("th", {}, ["Resort"])]);
+    for (const key of PERIOD_KEYS) {
+      hr.appendChild(h("th", {}, [
+        h("div", {}, [shortLabel(key)]),
+        h("div", { class: "sub" }, [span(key)]),
       ]));
     }
-    results.appendChild(list);
+    hr.appendChild(h("th", { class: "notes-h" }, ["Notes / additional dates"]));
+    table.appendChild(h("thead", {}, [hr]));
+
+    const tbody = h("tbody");
+    for (const r of sorted) {
+      const blackouts = blackoutSetFor(r);
+      const reservation = r[getPass(pass).reservationDataset].reservation;
+      const nameCell = h("th", {}, [
+        h("span", { class: "indy-pmatrix__name" }, [r.name]),
+        reservation.status === "required" ? h("span", { class: "indy-restag" }, ["Res"]) : null,
+        h("div", { class: "indy-row__meta" }, [r.region]),
+      ]);
+      const tr = h("tr", {}, [nameCell]);
+      for (const key of PERIOD_KEYS) {
+        const st = cellState(blackouts, key);
+        const label = st === "open" ? "Open" : st === "blackout" ? "Blacked out" : "Partial — some days";
+        tr.appendChild(h("td", {}, [
+          h("span", { class: `indy-pdot ${st}`, title: `${shortLabel(key)} — ${label}` }),
+        ]));
+      }
+      const notes = resortNotes(blackouts);
+      tr.appendChild(h("td", { class: "notes" }, [notes || "—"]));
+      tbody.appendChild(tr);
+    }
+    table.appendChild(tbody);
+    results.appendChild(h("div", { class: "indy-matrix-wrap" }, [table]));
   }
 
   // ---- dates chosen: behave like the checker ----
